@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Admin Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #f3f4f6 100%);
+            font-family: 'Arial', sans-serif;
+        }
+        .dashboard-container {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+        .nav-item {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        .btn-primary {
+            background-color: #6a11cb;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #5a0faa;
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="p-6 w-64 text-white sidebar">
+        <div class="mb-10">
+            <h1 class="font-bold text-2xl">Admin Dashboard</h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="flex items-center px-4 py-3 rounded cursor-pointer nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <!-- added href -->
+                    <a href="admin-dashboard.html">Dashboard</a> 
+                </li>
+                <li class="flex items-center px-4 py-3 rounded cursor-pointer nav-item" >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <!-- added href -->
+                    <a href="donor-dashboard.html">Donors</a>
+                </li>
+                <li class="flex items-center px-4 py-3 rounded cursor-pointer nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                    Blood Banks
+                </li>
+                <li class="flex items-center px-4 py-3 rounded cursor-pointer nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    Inventory
+                </li>
+                <li class="flex items-center px-4 py-3 rounded cursor-pointer nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    Profile
+                </li>
+                <li class="flex items-center px-4 py-3 rounded cursor-pointer nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10 dashboard-container">
+        <div class="flex justify-between items-center mb-10">
+            <h1 class="font-bold text-3xl text-purple-800">Admin Dashboard</h1>
+            <div class="flex items-center">
+                <button class="mr-4 px-4 py-2 rounded text-white btn-primary">
+                    Generate Report
+                </button>
+                <div class="flex justify-center items-center bg-purple-500 rounded-full w-10 h-10 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Statistics -->
+        <div class="gap-6 grid grid-cols-4 mb-10">
+            <div class="p-6 card">
+                <h3 class="mb-4 font-semibold text-purple-700 text-xl">Total Donors</h3>
+                <div class="font-bold text-4xl text-purple-800">1,250</div>
+                <p class="mt-2 text-green-600">+12% this month</p>
+            </div>
+            <div class="p-6 card">
+                <h3 class="mb-4 font-semibold text-purple-700 text-xl">Donations</h3>
+                <div class="font-bold text-4xl text-purple-800">485</div>
+                <p class="mt-2 text-green-600">+8% this month</p>
+            </div>
+            <div class="p-6 card">
+                <h3 class="mb-4 font-semibold text-purple-700 text-xl">Blood Banks</h3>
+                <div class="font-bold text-4xl text-purple-800">23</div>
+                <p class="mt-2 text-gray-600">Active Locations</p>
+            </div>
+            <div class="p-6 card">
+                <h3 class="mb-4 font-semibold text-purple-700 text-xl">Blood Units</h3>
+                <div class="font-bold text-4xl text-purple-800">1,756</div>
+                <p class="mt-2 text-gray-600">Total Inventory</p>
+            </div>
+        </div>
+
+        <!-- Recent Donations and Blood Bank Inventory -->
+        <div class="gap-6 grid grid-cols-2">
+            <!-- Recent Donations -->
+            <div class="p-6 card">
+                <h2 class="mb-6 font-bold text-2xl text-purple-800">Recent Donations</h2>
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-purple-100 text-purple-800">
+                            <th class="px-4 py-3 text-left">Donor</th>
+                            <th class="px-4 py-3 text-left">Blood Group</th>
+                            <th class="px-4 py-3 text-left">Date</th>
+                            <th class="px-4 py-3 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-4 py-3">John Smith</td>
+                            <td class="px-4 py-3">A+</td>
+                            <td class="px-4 py-3">March 15, 2024</td>
+                            <td class="px-4 py-3">
+                                <span class="bg-green-200 px-3 py-1 rounded-full text-green-800 text-sm">Processed</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="px-4 py-3">Emily Davis</td>
+                            <td class="px-4 py-3">O-</td>
+                            <td class="px-4 py-3">March 12, 2024</td>
+                            <td class="px-4 py-3">
+                                <span class="bg-green-200 px-3 py-1 rounded-full text-green-800 text-sm">Processed</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3">Michael Brown</td>
+                            <td class="px-4 py-3">B+</td>
+                            <td class="px-4 py-3">March 10, 2024</td>
+                            <td class="px-4 py-3">
+                                <span class="bg-green-200 px-3 py-1 rounded-full text-green-800 text-sm">Processed</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Blood Bank Inventory -->
+            <div class="p-6 card">
+                <h2 class="mb-6 font-bold text-2xl text-purple-800">Blood Bank Inventory</h2>
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-purple-100 text-purple-800">
+                            <th class="px-4 py-3 text-left">Blood Group</th>
+                            <th class="px-4 py-3 text-left">Available Units</th>
+                            <th class="px-4 py-3 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b">
+                            <td class="px-4 py-3">A+</td>
+                            <td class="px-4 py-3">358</td>
+                            <td class="py-3 
